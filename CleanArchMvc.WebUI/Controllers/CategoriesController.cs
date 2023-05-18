@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CleanArchMvc.WebUI.Controllers
 {
-    public class CategoryController : Controller
+    public class CategoriesController : Controller
     {
         readonly ICategoryService _categoryService;
 
-        public CategoryController(ICategoryService categoryService)
+        public CategoriesController(ICategoryService categoryService)
         {
             _categoryService = categoryService;
         }
@@ -15,8 +15,8 @@ namespace CleanArchMvc.WebUI.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var result = await _categoryService.GetCategories();
-            return View(result);
+            var categories = await _categoryService.GetCategories();
+            return View(categories);
         }
     }
 }
