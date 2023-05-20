@@ -7,6 +7,7 @@ namespace CleanArchMvc.Infra.Data.Repositories
 {
     public class ProductRepository : IProductRepository
     {
+#pragma warning disable IDE0044 // Adicionar modificador somente leitura
         ApplicationDbContext _productContext;
 
         public ProductRepository(ApplicationDbContext context)
