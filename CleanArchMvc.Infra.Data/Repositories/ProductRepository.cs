@@ -9,6 +9,7 @@ namespace CleanArchMvc.Infra.Data.Repositories
     {
 #pragma warning disable IDE0044 // Adicionar modificador somente leitura
         ApplicationDbContext _productContext;
+#pragma warning restore IDE0044 // Adicionar modificador somente leitura
 
         public ProductRepository(ApplicationDbContext context)
         {
@@ -18,8 +19,10 @@ namespace CleanArchMvc.Infra.Data.Repositories
         public async Task<Product> GetByIdAsync(int? id)
         {
             //return await _productContext.Products.FindAsync(id);
+#pragma warning disable CS8603 // Possível retorno de referência nula.
             return await _productContext.Products.Include(c => c.Category)
                                      .SingleOrDefaultAsync(p => p.Id == id);
+#pragma warning restore CS8603 // Possível retorno de referência nula.
         }
 
         //public async Task<Product> GetProductCategoryAsync(int? id)

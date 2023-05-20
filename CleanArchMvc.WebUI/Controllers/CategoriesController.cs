@@ -57,6 +57,7 @@ namespace CleanArchMvc.WebUI.Controllers
         {
             if(ModelState.IsValid)
             {
+#pragma warning disable CS0168 // A variável foi declarada, mas nunca foi usada
                 try
                 {
                     await _categoryService.Update(categoryDto);
@@ -65,7 +66,8 @@ namespace CleanArchMvc.WebUI.Controllers
                 {
                     throw;
                 }
-                    return RedirectToAction(nameof(Index));
+#pragma warning restore CS0168 // A variável foi declarada, mas nunca foi usada
+                return RedirectToAction(nameof(Index));
             }
             return View(categoryDto);
         }

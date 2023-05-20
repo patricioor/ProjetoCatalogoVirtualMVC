@@ -29,7 +29,7 @@ namespace CleanArchMvc.Application.Services
             if (productsQuery == null)
                 throw new Exception($"Entity could not be loaded.");
 #pragma warning restore IDE0270 // Usar a expressão de união
-            
+
             var result = await _mediator.Send(productsQuery);
             return _mapper.Map<IEnumerable<ProductDTO>>(result);
         }
