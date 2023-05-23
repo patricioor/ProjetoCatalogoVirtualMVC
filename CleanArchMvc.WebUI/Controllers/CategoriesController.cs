@@ -22,7 +22,7 @@ namespace CleanArchMvc.WebUI.Controllers
             var categories = await _categoryService.GetCategories();
             return View(categories);
         }
-        [Authorize(Roles = "Admin")]
+
         [HttpGet()]
         public IActionResult Create()
         {
@@ -39,7 +39,6 @@ namespace CleanArchMvc.WebUI.Controllers
             }
             return View();
         }
-        [Authorize(Roles = "Admin")]
         [HttpGet()]
         public async Task<IActionResult> Edit(int? id)
         {
@@ -73,7 +72,7 @@ namespace CleanArchMvc.WebUI.Controllers
             }
             return View(categoryDto);
         }
-        [Authorize(Roles = "Admin")]
+
         [HttpGet]
         public async Task<ActionResult> Delete(int? id)
         {

@@ -27,7 +27,7 @@ namespace CleanArchMvc.WebUI.Controllers
 
             return View(product);
         }
-        [Authorize(Roles = "Admin")]
+
         [HttpGet]
         public async Task<IActionResult> Create()
         {
@@ -51,7 +51,7 @@ namespace CleanArchMvc.WebUI.Controllers
             }
             return View(productDto);
         }
-        [Authorize(Roles = "Admin")]
+
         [HttpGet]
         public async Task<IActionResult> Edit(int? id)
         {
@@ -96,7 +96,6 @@ namespace CleanArchMvc.WebUI.Controllers
             return View(productDto);
         }
 
-        [HttpPost, ActionName("Delete")]
         public async Task<IActionResult> DeleteConfirmed(int? id)
         {
             await _productService.Remove(id);
