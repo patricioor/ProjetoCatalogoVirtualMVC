@@ -7,18 +7,21 @@ namespace CleanArchMvc.Infra.Data.Identity
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
-        public AuthenticateService(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
+
+        public AuthenticateService(SignInManager<ApplicationUser> signInManager,
+            UserManager<ApplicationUser> userManager)
         {
-            _userManager = userManager;
             _signInManager = signInManager;
+            _userManager = userManager;
         }
+
         public async Task<bool> Authenticate(string email, string password)
         {
-            var result = await _signInManager.PasswordSignInAsync(email, password, false, lockoutOnFailure: false);
+            var result = await _signInManager.PasswordSignInAsync(email,
+                password, false, lockoutOnFailure: false);
 
             return result.Succeeded;
         }
-
         public async Task<bool> RegisterUser(string email, string password)
         {
             var applicationUser = new ApplicationUser
@@ -33,7 +36,6 @@ namespace CleanArchMvc.Infra.Data.Identity
             {
                 await _signInManager.SignInAsync(applicationUser, isPersistent: false);
             }
-
             return result.Succeeded;
         }
 
