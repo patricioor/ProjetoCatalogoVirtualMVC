@@ -28,7 +28,7 @@ namespace CleanArchMvc.Application.DTOs
         [DisplayFormat(DataFormatString = "{0:C2}")]
         [DataType(DataType.Currency)]
         [DisplayName("Price")]
-        public Decimal Price { get; set; }
+        public decimal Price { get; set; }
 
         [Required(ErrorMessage = "Stock is required")]
         [Range(1, 9999)]
@@ -45,6 +45,5 @@ namespace CleanArchMvc.Application.DTOs
         
         [DisplayName("Categories")]
         public int CategoryId { get; set; }
-
     }
 }
